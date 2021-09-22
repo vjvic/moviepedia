@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Layout from "components/Layout/Layout";
+import GlobalStyles from "styles/GlobalStyles";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "Pages/Home";
+import Genre from "Pages/Genre";
+import Results from "Pages/Results";
+import Watchlist from "Pages/Watchlist";
+import Favorites from "Pages/Favorites";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GlobalStyles />
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/genre/:id" component={Genre} />
+            <Route path="/results/:value" component={Results} />
+            <Route path="/watchlist" component={Watchlist} />
+            <Route path="/favorites" component={Favorites} />
+          </Switch>
+        </Layout>
+      </Router>
     </div>
   );
 }
