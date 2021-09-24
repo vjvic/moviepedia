@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppbarWrapper,
   SearchWrapper,
@@ -7,13 +7,33 @@ import {
 } from "./Appbar.styles";
 import { FaSearch } from "react-icons/fa";
 import { BtnOutline } from "styles/Button.styles";
+import { useHistory } from "react-router";
 
 const Appbar = () => {
+  const [query, setQuery] = useState("");
+
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (query) {
+      history.push("/results/" + query);
+    }
+
+    setQuery("");
+  };
+
   return (
     <AppbarWrapper>
       <SearchWrapper>
-        <form>
-          <SearchInput type="text" placeholder="Search..." />
+        <form onSubmit={handleSubmit}>
+          <SearchInput
+            type="text"
+            placeholder="Search..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
           <SearchBtn>
             <FaSearch />
           </SearchBtn>

@@ -12,3 +12,14 @@ export const fetchGenre = (id, page) => async (dispatch) => {
 
   dispatch({ type: ActionTypes.GET_MOVIE_SUCCESS, payload: data });
 };
+
+//fetch results
+export const fetchResults = (value, page) => async (dispatch) => {
+  dispatch({ type: ActionTypes.GET_MOVIE_REQUEST });
+
+  const { data } = await movieApi.get(request.search, {
+    params: { query: value, page },
+  });
+
+  dispatch({ type: ActionTypes.GET_MOVIE_SUCCESS, payload: data });
+};
