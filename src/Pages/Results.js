@@ -1,19 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "components/Movie/Movie";
 import { fetchResults } from "Redux/actions/movieAction";
 import { useParams } from "react-router";
 import imgUrl from "Request/imgUrl";
 import { Grid } from "styles/Grid";
+import Paginate from "components/Pagination/Paginate";
 
 const Results = () => {
   const { value } = useParams();
   const dispatch = useDispatch();
   const { movies, loading } = useSelector((state) => state.movies);
 
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
     dispatch(fetchResults(value, 1));
   }, [dispatch, value]);
+
+  const changePage = (page) => {
+    setPage(page);
+  };
 
   if (loading) return "loading...";
 
@@ -28,6 +35,12 @@ const Results = () => {
           />
         ))}
       </Grid>
+
+      <Paginate
+        page={page}
+        totalPage={movies.total_pages}
+        changePage={changePage}
+      />
     </div>
   );
 };
