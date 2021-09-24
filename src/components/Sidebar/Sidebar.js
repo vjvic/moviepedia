@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   SidebarWrapper,
   Header,
@@ -8,30 +8,20 @@ import {
 } from "./Sidebar.styles";
 import logo from "assets/image/logo.png";
 import { menu } from "./sidebarData";
-import movieApi from "components/Apis/movieApi";
-import request from "Request/request";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchGenres } from "Redux/actions/genreAction";
 
 const Sidebar = () => {
-  const [genres, setGenres] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   const location = useLocation();
+  const dispatch = useDispatch();
+  const { genres } = useSelector((state) => state.genres);
 
   useEffect(() => {
-    setLoading(true);
-    movieApi
-      .get(request.genre)
-      .then((response) => {
-        setGenres(response.data);
-        console.log(response.data);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    dispatch(fetchGenres());
+  }, [dispatch]);
 
-  if (loading) return "";
   return (
     <SidebarWrapper>
       {/* header */}
@@ -45,14 +35,14 @@ const Sidebar = () => {
       {/* menu */}
       <List>
         <small>Menu</small>
-        {menu.map((menu) => (
+        {menu.map(({ text, icon, path }) => (
           <ListItem
-            key={menu.text}
-            background={location.pathname === menu.path ? "active" : null}
+            key={text}
+            background={location.pathname === path ? "active" : null}
           >
-            {menu.icon}
-            <Link to={menu.path}>
-              <div>{menu.text}</div>
+            {icon}
+            <Link to={path}>
+              <div>{text}</div>
             </Link>
           </ListItem>
         ))}
@@ -61,11 +51,18 @@ const Sidebar = () => {
       {/*   genres */}
       <List>
         <small>Genres</small>
-        {genres.genres.map((genre) => (
-          <ListItem key={genre.name}>
-            <Link to={`/genre/${genre.id}`}>{genre.name}</Link>
-          </ListItem>
-        ))}
+        {genres
+          ? genres.map(({ name, id }) => (
+              <ListItem
+                key={name}
+                background={
+                  location.pathname === `/genre/${id}` ? "active" : null
+                }
+              >
+                <Link to={`/genre/${id}`}>{name}</Link>
+              </ListItem>
+            ))
+          : null}
       </List>
     </SidebarWrapper>
   );

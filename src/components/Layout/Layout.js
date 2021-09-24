@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "components/Sidebar/Sidebar";
-import { LayoutWrapper } from "./Layout.styles";
+import Appbar from "components/Appbar/Appbar";
+import { Container, LayoutWrapper } from "./Layout.styles";
 
 const Layout = ({ children }) => {
   return (
@@ -8,8 +9,13 @@ const Layout = ({ children }) => {
       {/* sidebar */}
       <Sidebar />
 
-      {/*  main */}
-      <main>{children}</main>
+      <Container>
+        {/* appbar */}
+        <Appbar />
+
+        {/*  main */}
+        <main>{children}</main>
+      </Container>
     </LayoutWrapper>
   );
 };

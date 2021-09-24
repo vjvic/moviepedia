@@ -23,6 +23,7 @@ export const Header = styled.header`
   padding: 1rem;
   grid-gap: 0.5rem;
   margin-bottom: 1rem;
+  height: 50px;
 
   img {
     width: 40px;
