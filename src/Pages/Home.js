@@ -13,7 +13,6 @@ import Hero from "components/Hero/Hero";
 const Home = () => {
   const dispatch = useDispatch();
   const {
-    nowPlaying,
     popular,
     topRated,
     upcoming,
@@ -37,13 +36,6 @@ const Home = () => {
     <div>
       {/*  hero */}
       <Hero />
-
-      {/*  now playing */}
-      <MovieCarousel
-        items={nowPlaying.results}
-        type={"BACKDROP"}
-        text={"Now Playing"}
-      />
 
       {/*  popular */}
 

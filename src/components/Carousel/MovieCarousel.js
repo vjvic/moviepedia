@@ -43,6 +43,7 @@ const MovieCarousel = ({ items, type, text }) => {
             title={item.title}
             img={imageType(type, item)}
             vote={item.vote_average}
+            id={item.id}
           />
         ))}
       </Carousel>

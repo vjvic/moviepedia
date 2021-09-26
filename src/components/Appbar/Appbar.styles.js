@@ -25,6 +25,7 @@ export const SearchInput = styled.input`
 
   &:focus {
     outline: none;
+    border: 1px solid #fff;
   }
 `;
 

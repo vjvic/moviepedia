@@ -39,7 +39,9 @@ const Appbar = () => {
           </SearchBtn>
         </form>
       </SearchWrapper>
-      <BtnOutline>Login</BtnOutline>
+      <BtnOutline round size="sm">
+        Login
+      </BtnOutline>
     </AppbarWrapper>
   );
 };

@@ -19,6 +19,14 @@ const theme = {
     round: "1000px",
   },
 
+  transition: {
+    ease: "all 0.3s ease;",
+    easeIn: "all 0.3s ease-in;",
+    easeOut: "all 0.3s ease-out;",
+  },
+
+  overlay: "rgba(0, 0, 0, 0.4)",
+
   breakpoints: {
     xs: `(max-width: 320px)`,
     sm: `(max-width: 464px)`,

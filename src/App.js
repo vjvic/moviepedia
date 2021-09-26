@@ -6,6 +6,7 @@ import Genre from "Pages/Genre";
 import Results from "Pages/Results";
 import Watchlist from "Pages/Watchlist";
 import Favorites from "Pages/Favorites";
+import SingleMovie from "Pages/SingleMovie/SingleMovie";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/genre/:id" component={Genre} />
             <Route path="/results/:value" component={Results} />
+            <Route path="/movie/:id" component={SingleMovie} />
             <Route path="/watchlist" component={Watchlist} />
             <Route path="/favorites" component={Favorites} />
           </Switch>

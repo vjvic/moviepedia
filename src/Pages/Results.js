@@ -10,7 +10,7 @@ import Paginate from "components/Pagination/Paginate";
 const Results = () => {
   const { value } = useParams();
   const dispatch = useDispatch();
-  const { movies, loading } = useSelector((state) => state.movies);
+  const { movies, moviesLoading } = useSelector((state) => state.movies);
 
   const [page, setPage] = useState(1);
 
@@ -22,16 +22,18 @@ const Results = () => {
     setPage(page);
   };
 
-  if (loading) return "loading...";
+  if (moviesLoading) return "loading...";
 
   return (
     <div>
       <Grid>
         {movies.results.map((item) => (
           <Movie
+            key={item.id}
             title={item.title}
             img={imgUrl.small + item.poster_path}
             vote={item.vote_average}
+            id={item.id}
           />
         ))}
       </Grid>
