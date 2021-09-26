@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SidebarWrapper = styled.div`
+export const SidebarContainer = styled.div`
   height: 100%;
   width: 250px;
   position: fixed;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AppbarWrapper = styled.div`
+export const AppbarContainer = styled.div`
   margin-left: 250px;
   padding: 0px 10px;
   display: flex;

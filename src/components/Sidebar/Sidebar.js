@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {
-  SidebarWrapper,
+  SidebarContainer,
   Header,
   List,
   ListItem,
@@ -23,7 +23,7 @@ const Sidebar = () => {
   }, [dispatch]);
 
   return (
-    <SidebarWrapper>
+    <SidebarContainer>
       {/* header */}
       <Header>
         <img src={logo} alt="logo" />
@@ -64,7 +64,7 @@ const Sidebar = () => {
             ))
           : null}
       </List>
-    </SidebarWrapper>
+    </SidebarContainer>
   );
 };
 

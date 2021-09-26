@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LayoutWrapper = styled.div`
+export const Layoutontainer = styled.div`
   main {
     margin-left: 250px;
     padding: 0px 10px;

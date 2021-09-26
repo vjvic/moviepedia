@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import { Overlay } from "styles/Overlay";
 
-export const HeroWrapper = styled.section`
-  /*   background: url("https://image.tmdb.org/t/p/original/jlGmlFOcfo8n5tURmhC7YVd4Iyy.jpg")
-    no-repeat center center / cover;
-  border-radius: 10px; */
+export const HeroContainer = styled.section`
   height: 400px;
   width: 100%;
   margin-bottom: 5rem;

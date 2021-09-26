@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  HeroWrapper,
+  HeroContainer,
   MovieWrapper,
   MovieOverlay,
   ReleaseDate,
@@ -38,7 +38,7 @@ const Hero = () => {
   if (nowPlayingLoading) return "";
 
   return (
-    <HeroWrapper>
+    <HeroContainer>
       <HeroTitle>Now Playing</HeroTitle>
 
       <Carousel
@@ -68,7 +68,7 @@ const Hero = () => {
           </MovieWrapper>
         ))}
       </Carousel>
-    </HeroWrapper>
+    </HeroContainer>
   );
 };
 

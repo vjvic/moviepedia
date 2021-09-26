@@ -1,11 +1,11 @@
 import React from "react";
 import Sidebar from "components/Sidebar/Sidebar";
 import Appbar from "components/Appbar/Appbar";
-import { Container, LayoutWrapper } from "./Layout.styles";
+import { Container, Layoutontainer } from "./Layout.styles";
 
 const Layout = ({ children }) => {
   return (
-    <LayoutWrapper>
+    <Layoutontainer>
       {/* sidebar */}
       <Sidebar />
 
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
         {/*  main */}
         <main>{children}</main>
       </Container>
-    </LayoutWrapper>
+    </Layoutontainer>
   );
 };
 

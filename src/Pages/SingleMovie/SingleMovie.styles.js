@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BtnOutline } from "styles/Button.styles";
 
-export const MovieContainer = styled.div`
+export const SingleMovieContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 5rem;

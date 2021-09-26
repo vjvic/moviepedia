@@ -1,5 +1,5 @@
 import React from "react";
-import { MovieWrapper, Truncate } from "./Movie.styles";
+import { MovieContainer, Truncate, ImgWrapper } from "./Movie.styles";
 import ReactStars from "react-rating-stars-component";
 import { useHistory } from "react-router";
 import { convertAverage } from "utils/utils";
@@ -8,8 +8,10 @@ const Movie = ({ title, img, vote, id }) => {
   const history = useHistory();
 
   return (
-    <MovieWrapper onClick={() => history.push("/movie/" + id)}>
-      <img src={img} alt={title} />
+    <MovieContainer onClick={() => history.push("/movie/" + id)}>
+      <ImgWrapper>
+        <img src={img} alt={title} />
+      </ImgWrapper>
 
       <Truncate>{title}</Truncate>
 
@@ -21,7 +23,7 @@ const Movie = ({ title, img, vote, id }) => {
         activeColor="#fafafa"
         edit={false}
       />
-    </MovieWrapper>
+    </MovieContainer>
   );
 };
 

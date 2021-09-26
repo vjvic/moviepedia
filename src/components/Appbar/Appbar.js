@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  AppbarWrapper,
+  AppbarContainer,
   SearchWrapper,
   SearchInput,
   SearchBtn,
@@ -25,7 +25,7 @@ const Appbar = () => {
   };
 
   return (
-    <AppbarWrapper>
+    <AppbarContainer>
       <SearchWrapper>
         <form onSubmit={handleSubmit}>
           <SearchInput
@@ -42,7 +42,7 @@ const Appbar = () => {
       <BtnOutline round size="sm">
         Login
       </BtnOutline>
-    </AppbarWrapper>
+    </AppbarContainer>
   );
 };
 

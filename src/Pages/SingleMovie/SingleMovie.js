@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovie } from "Redux/actions/movieAction";
 import {
-  MovieContainer,
+  SingleMovieContainer,
   ImgWrapper,
   RatingWrapper,
   Runtime,
@@ -48,7 +48,7 @@ const SingleMovie = () => {
 
   return (
     <>
-      <MovieContainer>
+      <SingleMovieContainer>
         {/*  movie image */}
         <ImgWrapper>
           <img src={imgUrl.small + poster_path} alt={title} />
@@ -124,7 +124,7 @@ const SingleMovie = () => {
             ))}
           </Cast>
         </div>
-      </MovieContainer>
+      </SingleMovieContainer>
 
       {/*   recommendations */}
 
