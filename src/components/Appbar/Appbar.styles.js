@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BtnOutline } from "styles/Button.styles";
 
 export const AppbarContainer = styled.div`
   margin-left: 250px;
@@ -37,4 +38,16 @@ export const SearchBtn = styled.button`
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
+`;
+
+export const User = styled(BtnOutline)`
+  display: flex;
+  align-items: center;
+  grid-gap: 0.5rem;
+
+  &:hover {
+    svg {
+      transform: translateX(1px);
+    }
+  }
 `;

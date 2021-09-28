@@ -5,18 +5,20 @@ import { Container, Layoutontainer } from "./Layout.styles";
 
 const Layout = ({ children }) => {
   return (
-    <Layoutontainer>
-      {/* sidebar */}
-      <Sidebar />
+    <>
+      <Layoutontainer>
+        {/* sidebar */}
+        <Sidebar />
 
-      <Container>
-        {/* appbar */}
-        <Appbar />
+        <Container>
+          {/* appbar */}
+          <Appbar />
 
-        {/*  main */}
-        <main>{children}</main>
-      </Container>
-    </Layoutontainer>
+          {/*  main */}
+          <main>{children}</main>
+        </Container>
+      </Layoutontainer>
+    </>
   );
 };
 

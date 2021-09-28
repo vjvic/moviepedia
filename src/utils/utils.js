@@ -14,3 +14,18 @@ export const getMovieLength = (runtime) => {
 
   return HHMM;
 };
+
+//add token to localstorage
+export const setToken = (token) => {
+  return localStorage.setItem("token", token);
+};
+
+//remove token from localstorage
+export const removeToken = () => {
+  return localStorage.removeItem("token");
+};
+
+//convert text to lowercase & remove underscore
+export const arrangeText = (text) => {
+  return text.replace(/_/g, " ").toLowerCase();
+};

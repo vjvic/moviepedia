@@ -4,13 +4,25 @@ import {
   SearchWrapper,
   SearchInput,
   SearchBtn,
+  User,
 } from "./Appbar.styles";
 import { FaSearch } from "react-icons/fa";
 import { BtnOutline } from "styles/Button.styles";
 import { useHistory } from "react-router";
+import Modal from "components/Modal/Modal";
+import Login from "components/Forms/Login";
+import { useSelector, useDispatch } from "react-redux";
+import { openModal, closeModal, toggleLoginForm } from "Redux/actions/uiAction";
+import Signup from "components/Forms/Signup";
+import { HiOutlineLogout } from "react-icons/hi";
+import { logout } from "Redux/actions/authAction";
 
 const Appbar = () => {
   const [query, setQuery] = useState("");
+  const { form } = useSelector((state) => state.ui);
+  const { currentUser, loading } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
 
   const history = useHistory();
 
@@ -24,25 +36,48 @@ const Appbar = () => {
     setQuery("");
   };
 
+  const userIsLogin = (
+    <User round size="sm" onClick={() => dispatch(logout())}>
+      <div>{currentUser && currentUser[0].displayName}</div>
+
+      <HiOutlineLogout size={20} />
+    </User>
+  );
+
   return (
-    <AppbarContainer>
-      <SearchWrapper>
-        <form onSubmit={handleSubmit}>
-          <SearchInput
-            type="text"
-            placeholder="Search..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <SearchBtn>
-            <FaSearch />
-          </SearchBtn>
-        </form>
-      </SearchWrapper>
-      <BtnOutline round size="sm">
-        Login
-      </BtnOutline>
-    </AppbarContainer>
+    <>
+      <Modal
+        close={() => dispatch(closeModal())}
+        toggle={() => dispatch(toggleLoginForm())}
+      >
+        {form ? <Login /> : <Signup />}
+      </Modal>
+
+      <AppbarContainer>
+        <SearchWrapper>
+          <form onSubmit={handleSubmit}>
+            <SearchInput
+              type="text"
+              placeholder="Search..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <SearchBtn>
+              <FaSearch />
+            </SearchBtn>
+          </form>
+        </SearchWrapper>
+        {loading ? (
+          "loading..."
+        ) : currentUser ? (
+          userIsLogin
+        ) : (
+          <BtnOutline round size="sm" onClick={() => dispatch(openModal())}>
+            Login
+          </BtnOutline>
+        )}
+      </AppbarContainer>
+    </>
   );
 };
 

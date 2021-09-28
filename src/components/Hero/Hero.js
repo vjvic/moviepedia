@@ -50,7 +50,7 @@ const Hero = () => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
       >
         {nowPlaying.results.map((item) => (
-          <MovieWrapper>
+          <MovieWrapper key={item.id}>
             <img src={imgUrl.original + item.backdrop_path} alt={item.title} />
             <MovieOverlay>
               <div>

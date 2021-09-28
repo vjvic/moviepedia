@@ -34,6 +34,7 @@ export const Button = styled.button`
   padding: ${({ size }) => handleSize(size)};
   background: ${({ color }) => handleBgColor(color)};
   color: ${({ theme }) => theme.text.primary};
+  width: ${({ width }) => (width === "fullWidth" ? "100%" : null)};
 `;
 
 export const BtnOutline = styled(Button)`

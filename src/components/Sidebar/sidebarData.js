@@ -5,17 +5,17 @@ import { BsBookmark } from "react-icons/bs";
 export const menu = [
   {
     text: "Home",
-    icon: <RiHome2Line />,
+    icon: <RiHome2Line size={28} />,
     path: "/",
   },
   {
     text: "Watchlist",
-    icon: <BsBookmark />,
+    icon: <BsBookmark size={28} />,
     path: "/watchlist",
   },
   {
     text: "Favorites",
-    icon: <AiOutlineHeart />,
+    icon: <AiOutlineHeart size={28} />,
     path: "/favorites",
   },
 ];
