@@ -3,12 +3,18 @@ import { MovieContainer, Truncate, ImgWrapper } from "./Movie.styles";
 import ReactStars from "react-rating-stars-component";
 import { useHistory } from "react-router";
 import { convertAverage } from "utils/utils";
+import { motion } from "framer-motion";
 
 const Movie = ({ title, img, vote, id }) => {
   const history = useHistory();
 
   return (
-    <MovieContainer onClick={() => history.push("/movie/" + id)}>
+    <MovieContainer
+      onClick={() => history.push("/movie/" + id)}
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <ImgWrapper>
         <img src={img} alt={title} />
       </ImgWrapper>

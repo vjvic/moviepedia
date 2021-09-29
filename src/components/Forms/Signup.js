@@ -14,6 +14,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { signup } from "Redux/actions/authAction";
 import { arrangeText } from "utils/utils";
+import { motion } from "framer-motion";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -42,7 +43,11 @@ const Signup = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <h2>Signup</h2>
 
       {error && <Message>{arrangeText(error)}</Message>}

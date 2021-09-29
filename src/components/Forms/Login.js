@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleSignupForm } from "Redux/actions/uiAction";
 import { login } from "Redux/actions/authAction";
 import { arrangeText } from "utils/utils";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,11 @@ const Login = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <h2>Login</h2>
 
       {error && <Message>{arrangeText(error)}</Message>}
