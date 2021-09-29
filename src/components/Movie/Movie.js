@@ -1,9 +1,10 @@
 import React from "react";
-import { MovieContainer, Truncate, ImgWrapper } from "./Movie.styles";
+import { MovieContainer, ImgWrapper } from "./Movie.styles";
 import ReactStars from "react-rating-stars-component";
 import { useHistory } from "react-router";
 import { convertAverage } from "utils/utils";
 import { motion } from "framer-motion";
+import { Truncate } from "styles/Trucate";
 
 const Movie = ({ title, img, vote, id }) => {
   const history = useHistory();

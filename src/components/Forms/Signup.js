@@ -55,11 +55,7 @@ const Signup = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <InputWrapper>
           <label>Email</label>
-          <Input
-            {...register("email")}
-            placeholder="Enter email"
-            autoComplete="email"
-          />
+          <Input {...register("email")} placeholder="Enter email" />
           <Message>{errors?.email?.message}</Message>
         </InputWrapper>
 
@@ -69,7 +65,6 @@ const Signup = () => {
             type="text"
             placeholder="Enter username"
             {...register("username")}
-            autoComplete="username"
           />
           <Message>{errors?.username?.message}</Message>
         </InputWrapper>
@@ -80,7 +75,6 @@ const Signup = () => {
             type="password"
             placeholder="Enter password"
             {...register("password")}
-            autoComplete="new-password"
           />
           <Message>{errors?.password?.message}</Message>
         </InputWrapper>
@@ -91,7 +85,6 @@ const Signup = () => {
             type="password"
             placeholder="Confrim password"
             {...register("confirmPassword")}
-            autoComplete="new-password"
           />
           <Message>{errors?.confirmPassword?.message}</Message>
         </InputWrapper>

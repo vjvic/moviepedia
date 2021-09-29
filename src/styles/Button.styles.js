@@ -48,4 +48,9 @@ export const BtnOutline = styled(Button)`
     background: ${({ theme }) => theme.text.primary};
     color: ${({ theme }) => theme.color.background};
   }
+
+  &:disabled {
+    background: none;
+    color: inherit;
+  }
 `;

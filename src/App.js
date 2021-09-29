@@ -5,14 +5,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "Pages/Home";
 import Genre from "Pages/Genre";
 import Results from "Pages/Results";
-import Watchlist from "Pages/Watchlist";
-import Favorites from "Pages/Favorites";
 import SingleMovie from "Pages/SingleMovie/SingleMovie";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "Redux/actions/authAction";
+import Favorites from "Pages/UserMovies/Favorites";
+import Watchlist from "Pages/UserMovies/Watchlist";
+import { getFavorites, getWatchlist } from "Redux/actions/firestoreAction";
 
 function App() {
-  const { token } = useSelector((state) => state.auth);
+  const { token, currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   //set user
@@ -21,6 +22,15 @@ function App() {
       dispatch(getUserData(token));
     }
   }, [dispatch, token]);
+
+  //get user movie
+  useEffect(() => {
+    if (currentUser) {
+      const userID = currentUser[0].localId;
+      dispatch(getWatchlist(userID));
+      dispatch(getFavorites(userID));
+    }
+  }, [dispatch, currentUser]);
 
   return (
     <div>
@@ -32,8 +42,8 @@ function App() {
             <Route path="/genre/:id" component={Genre} />
             <Route path="/results/:value" component={Results} />
             <Route path="/movie/:id" component={SingleMovie} />
-            <Route path="/watchlist" component={Watchlist} />
             <Route path="/favorites" component={Favorites} />
+            <Route path="/watchlist" component={Watchlist} />
           </Switch>
         </Layout>
       </Router>

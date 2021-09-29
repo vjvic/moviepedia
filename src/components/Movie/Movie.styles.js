@@ -11,12 +11,6 @@ export const MovieContainer = styled.div`
   }
 `;
 
-export const Truncate = styled.h4`
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
 export const ImgWrapper = styled.div`
   overflow: hidden;
   border-radius: ${({ theme }) => theme.borderRadius.primary};

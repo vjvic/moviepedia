@@ -17,7 +17,6 @@ import imgUrl from "Request/imgUrl";
 import ReactStars from "react-rating-stars-component";
 import { convertAverage, getMovieLength } from "utils/utils";
 import { Link } from "react-router-dom";
-
 import MovieCarousel from "components/Carousel/MovieCarousel";
 import Modal from "components/Modal/Modal";
 import Trailer from "./Trailer/Trailer";
@@ -102,13 +101,13 @@ const SingleMovie = () => {
           </Overview>
 
           {/* details buttons */}
-          <DetailsButtons />
+          <DetailsButtons movieID={id} />
 
           {/* cast */}
           <h3>Cast</h3>
           <Cast>
             {cast.map((item) => (
-              <CastWrapper>
+              <CastWrapper key={item.id}>
                 <img src={imgUrl.small + item.profile_path} alt={item.name} />
                 <CastOverlay>
                   <h5>{item.name}</h5>
