@@ -22,11 +22,15 @@ import { BtnOutline } from "styles/Button.styles";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark, BsPlay } from "react-icons/bs";
 import MovieCarousel from "components/Carousel/MovieCarousel";
+import Modal from "components/Modal/Modal";
+import Trailer from "./Trailer/Trailer";
+import { openTrailer, closeTrailer } from "Redux/actions/uiAction";
 
 const SingleMovie = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { movie, movieLoading } = useSelector((state) => state.movies);
+  const { isTrailer } = useSelector((state) => state.ui);
 
   useEffect(() => {
     dispatch(fetchMovie(id));
@@ -48,6 +52,12 @@ const SingleMovie = () => {
 
   return (
     <>
+      {isTrailer && (
+        <Modal close={() => dispatch(closeTrailer())}>
+          <Trailer />
+        </Modal>
+      )}
+
       <SingleMovieContainer>
         {/*  movie image */}
         <ImgWrapper>
@@ -105,7 +115,7 @@ const SingleMovie = () => {
               <span>Add to watchlist</span>
             </BtnOutline>
 
-            <BtnOutline round size="sm">
+            <BtnOutline round size="sm" onClick={() => dispatch(openTrailer())}>
               <BsPlay />
               <span>Trailer</span>
             </BtnOutline>

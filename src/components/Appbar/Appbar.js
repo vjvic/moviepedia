@@ -19,8 +19,9 @@ import { logout } from "Redux/actions/authAction";
 
 const Appbar = () => {
   const [query, setQuery] = useState("");
-  const { form } = useSelector((state) => state.ui);
+
   const { currentUser, loading } = useSelector((state) => state.auth);
+  const { toggleForm, isForm } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
 
@@ -46,12 +47,14 @@ const Appbar = () => {
 
   return (
     <>
-      <Modal
-        close={() => dispatch(closeModal())}
-        toggle={() => dispatch(toggleLoginForm())}
-      >
-        {form ? <Login /> : <Signup />}
-      </Modal>
+      {isForm && (
+        <Modal
+          close={() => dispatch(closeModal())}
+          toggle={() => dispatch(toggleLoginForm())}
+        >
+          {toggleForm ? <Login /> : <Signup />}
+        </Modal>
+      )}
 
       <AppbarContainer>
         <SearchWrapper>

@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
 const Modal = ({ children, close, toggle }) => {
-  const { modal } = useSelector((state) => state.ui);
-  const { form } = useSelector((state) => state.ui);
+  const { toggleForm } = useSelector((state) => state.ui);
 
   const handleClick = (e) => {
     if (e.target.classList.contains("modal") && close) {
@@ -13,12 +12,10 @@ const Modal = ({ children, close, toggle }) => {
     }
 
     //back to login
-    if (e.target.classList.contains("modal") && !form) {
+    if (e.target.classList.contains("modal") && !toggleForm) {
       toggle();
     }
   };
-
-  if (!modal) return "";
 
   return (
     <ModalBackground

@@ -14,7 +14,7 @@ export const login = (email, password) => async (dispatch) => {
     setToken(data.idToken);
 
     dispatch({ type: ActionTypes.GET_TOKEN, payload: data.idToken });
-    dispatch({ type: ActionTypes.CLOSE_MODAL });
+    dispatch({ type: ActionTypes.CLOSE_FORM });
   } catch (error) {
     dispatch({
       type: ActionTypes.USER_ERROR,
@@ -41,7 +41,7 @@ export const signup = (email, password, userName) => (dispatch) => {
       });
     })
     .then(() => {
-      dispatch({ type: ActionTypes.CLOSE_MODAL });
+      dispatch({ type: ActionTypes.CLOSE_FORM });
     })
     .catch((error) =>
       dispatch({ type: ActionTypes.USER_ERROR, payload: error.message })
