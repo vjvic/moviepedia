@@ -5,6 +5,7 @@ import {
   List,
   ListItem,
   Divider,
+  CloseBtn,
 } from "./Sidebar.styles";
 import logo from "assets/image/logo.png";
 import { menu } from "./sidebarData";
@@ -12,18 +13,26 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGenres } from "Redux/actions/genreAction";
+import { FaTimes } from "react-icons/fa";
+import { closeSidebar } from "Redux/actions/uiAction";
 
 const Sidebar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const { genres } = useSelector((state) => state.genres);
+  const { isSidebar } = useSelector((state) => state.ui);
 
   useEffect(() => {
     dispatch(fetchGenres());
   }, [dispatch]);
 
   return (
-    <SidebarContainer>
+    <SidebarContainer isSidebar={isSidebar}>
+      {/* sidebar close button */}
+      <CloseBtn onClick={() => dispatch(closeSidebar())}>
+        <FaTimes />
+      </CloseBtn>
+
       {/* header */}
       <Header>
         <img src={logo} alt="logo" />

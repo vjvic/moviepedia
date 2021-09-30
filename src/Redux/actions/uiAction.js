@@ -32,3 +32,15 @@ export const openTrailer = () => {
 export const closeTrailer = () => {
   return { type: ActionTypes.CLOSE_TRAILER };
 };
+
+//open sidebar
+
+export const openSidebar = () => {
+  return { type: ActionTypes.OPEN_SIDEBAR };
+};
+
+//close sidebar
+
+export const closeSidebar = () => {
+  return { type: ActionTypes.CLOSE_SIDEBAR };
+};

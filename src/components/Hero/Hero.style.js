@@ -2,15 +2,23 @@ import styled from "styled-components";
 import { Overlay } from "styles/Overlay";
 
 export const HeroContainer = styled.section`
-  height: 400px;
+  height: 500px;
   width: 100%;
   margin-bottom: 5rem;
 
   img {
     border-radius: ${({ theme }) => theme.borderRadius.primary};
     width: 100%;
-    height: 400px;
+    height: 500px;
     object-fit: cover;
+  }
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    height: 300px;
+
+    img {
+      height: 300px;
+    }
   }
 `;
 
@@ -21,11 +29,17 @@ export const MovieWrapper = styled.div`
 export const MovieOverlay = styled(Overlay)`
   display: flex;
   align-items: center;
+  padding: 1rem 5rem;
 
-  div {
-    margin-left: 6rem;
-    h2 {
-      font-size: 2rem;
+  @media ${({ theme }) => theme.breakpoints.md} {
+    padding: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+
+    @media ${({ theme }) => theme.breakpoints.md} {
+      font-size: 1.5rem;
     }
   }
 `;

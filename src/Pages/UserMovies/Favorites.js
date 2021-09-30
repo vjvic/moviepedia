@@ -11,22 +11,24 @@ const Favorites = () => {
     (state) => state.firestore
   );
 
-  const { currentUser } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
+
+  if (!token) return <Text text={"Please login to use this feature"} />;
 
   if (favoritesLoading) return <Spinner />;
-
-  if (!currentUser) return <Text text={"Please login to use this feature"} />;
-
-  if (favorites.length <= 0) return <Text text={"No favorites"} />;
 
   return (
     <UserMovieContainer>
       <h2>Favorites</h2>
 
       <Grid>
-        {favorites.map((item) => (
-          <Item item={item} key={item.id} collection={"favorites"} />
-        ))}
+        {favorites.length <= 0 ? (
+          <Text text={"No favorites"} />
+        ) : (
+          favorites.map((item) => (
+            <Item item={item} key={item.id} collection={"favorites"} />
+          ))
+        )}
       </Grid>
     </UserMovieContainer>
   );

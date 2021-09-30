@@ -47,7 +47,7 @@ const Hero = () => {
         autoPlaySpeed={3000}
         infinite={true}
         sliderClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
       >
         {nowPlaying.results.map((item) => (
           <MovieWrapper key={item.id}>

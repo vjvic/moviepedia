@@ -11,22 +11,24 @@ const Watchlist = () => {
     (state) => state.firestore
   );
 
-  const { currentUser } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
+
+  if (!token) return <Text text={"Please login to use this feature"} />;
 
   if (watchlistLoading) return <Spinner />;
-
-  if (!currentUser) return <Text text={"Please login to use this feature"} />;
-
-  if (watchlist.length <= 0) return <Text text={"No watchlist"} />;
 
   return (
     <UserMovieContainer>
       <h2>Watchlist</h2>
 
       <Grid>
-        {watchlist.map((item) => (
-          <Item item={item} key={item.id} collection={"watchlist"} />
-        ))}
+        {watchlist.length <= 0 ? (
+          <Text text={"No watchlist"} />
+        ) : (
+          watchlist.map((item) => (
+            <Item item={item} key={item.id} collection={"watchlist"} />
+          ))
+        )}
       </Grid>
     </UserMovieContainer>
   );

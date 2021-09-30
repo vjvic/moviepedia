@@ -1,19 +1,20 @@
 import React from "react";
 import Sidebar from "components/Sidebar/Sidebar";
 import Appbar from "components/Appbar/Appbar";
-import { Container, Layoutontainer } from "./Layout.styles";
+import { Layoutontainer } from "./Layout.styles";
+import { Container } from "styles/Container";
 
 const Layout = ({ children }) => {
   return (
     <>
       <Layoutontainer>
+        {/* appbar */}
+        <Appbar />
+
         {/* sidebar */}
         <Sidebar />
 
         <Container>
-          {/* appbar */}
-          <Appbar />
-
           {/*  main */}
           <main>{children}</main>
         </Container>

@@ -4,6 +4,7 @@ const initialState = {
   isForm: false,
   toggleForm: true,
   isTrailer: false,
+  isSidebar: false,
 };
 
 export const uiReducer = (state = initialState, { type, payload }) => {
@@ -20,6 +21,10 @@ export const uiReducer = (state = initialState, { type, payload }) => {
       return { ...state, isTrailer: true };
     case ActionTypes.CLOSE_TRAILER:
       return { ...state, isTrailer: false };
+    case ActionTypes.OPEN_SIDEBAR:
+      return { ...state, isSidebar: true };
+    case ActionTypes.CLOSE_SIDEBAR:
+      return { ...state, isSidebar: false };
     default:
       return state;
   }

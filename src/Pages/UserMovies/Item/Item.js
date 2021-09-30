@@ -34,7 +34,7 @@ const Item = ({ item, collection }) => {
       />
       <Card>
         <Truncate>
-          <Link>{item.title}</Link>
+          <Link to={"/movie/" + item.id}>{item.title}</Link>
         </Truncate>
         <small>{item.release_date}</small>
         <ReactStars

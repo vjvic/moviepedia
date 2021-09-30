@@ -5,8 +5,9 @@ import {
   SearchInput,
   SearchBtn,
   User,
+  Bars,
 } from "./Appbar.styles";
-import { FaSearch } from "react-icons/fa";
+import { FaBars, FaSearch } from "react-icons/fa";
 import { BtnOutline } from "styles/Button.styles";
 import { useHistory } from "react-router";
 import Modal from "components/Modal/Modal";
@@ -17,6 +18,7 @@ import Signup from "components/Forms/Signup";
 import { HiOutlineLogout } from "react-icons/hi";
 import { logout } from "Redux/actions/authAction";
 import spinner from "assets/spinner/spinner.gif";
+import { openSidebar } from "Redux/actions/uiAction";
 
 const Appbar = () => {
   const [query, setQuery] = useState("");
@@ -58,6 +60,10 @@ const Appbar = () => {
       )}
 
       <AppbarContainer>
+        <Bars onClick={() => dispatch(openSidebar())}>
+          <FaBars size={28} />
+        </Bars>
+
         <SearchWrapper>
           <form onSubmit={handleSubmit}>
             <SearchInput

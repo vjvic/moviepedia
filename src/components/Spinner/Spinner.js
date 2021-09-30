@@ -4,7 +4,7 @@ import { SpinnerWrapper } from "./Spinner.styles";
 const Spinner = () => {
   return (
     <SpinnerWrapper>
-      <div class="lds-dual-ring"></div>
+      <div className="lds-dual-ring"></div>
     </SpinnerWrapper>
   );
 };

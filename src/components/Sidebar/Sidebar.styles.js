@@ -1,17 +1,24 @@
 import styled from "styled-components";
+import { Button } from "styles/Button.styles";
 
 export const SidebarContainer = styled.div`
   height: 100%;
   width: 250px;
   position: fixed;
-  z-index: 1;
+  z-index: 6;
   top: 0;
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
   border-right: 1px solid ${({ theme }) => theme.color.lead};
+  background: ${({ theme }) => theme.color.lead};
+  transition: ${({ theme }) => theme.transition.ease};
   ::-webkit-scrollbar {
     display: none;
+  }
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    left: ${({ isSidebar }) => (isSidebar ? 0 : "-100%")};
   }
 `;
 
@@ -76,5 +83,15 @@ export const Divider = styled.hr`
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
-  border-top: 1px solid ${({ theme }) => theme.color.lead};
+`;
+
+export const CloseBtn = styled(Button)`
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  display: none;
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    display: block;
+  }
 `;

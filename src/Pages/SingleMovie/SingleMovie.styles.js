@@ -4,12 +4,21 @@ export const SingleMovieContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 5rem;
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    display: block;
+  }
 `;
 
 export const ImgWrapper = styled.div`
   width: 400px;
+
   img {
     border-radius: ${({ theme }) => theme.borderRadius.primary};
+  }
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    width: 250px;
   }
 `;
 

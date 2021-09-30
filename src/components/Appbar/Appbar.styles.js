@@ -1,13 +1,16 @@
 import styled from "styled-components";
-import { BtnOutline } from "styles/Button.styles";
+import { BtnOutline, Button } from "styles/Button.styles";
 
 export const AppbarContainer = styled.div`
-  margin-left: 250px;
   padding: 0px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  background: ${({ theme }) => theme.color.lead};
+  position: fixed;
+  width: 100%;
+  z-index: 5;
 
   .spinner {
     width: 28px;
@@ -18,6 +21,12 @@ export const SearchWrapper = styled.div`
   margin: 1.5rem 0;
   width: 400px;
   position: relative;
+  margin-left: 250px;
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    margin-left: 0;
+    margin: 0.5rem;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -48,10 +57,35 @@ export const User = styled(BtnOutline)`
   display: flex;
   align-items: center;
   grid-gap: 0.5rem;
+  margin-left: 0.5rem;
 
   &:hover {
     svg {
       transform: translateX(1px);
     }
+  }
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    padding: 6px 12px;
+    font-size: 12px;
+
+    svg {
+      width: 16px;
+    }
+  }
+`;
+
+export const Bars = styled(Button)`
+  margin-right: 0.4rem;
+  margin-top: 0.5rem;
+  display: none;
+  color: ${({ theme }) => theme.text.secondary};
+
+  &:active {
+    color: ${({ theme }) => theme.text.primary};
+  }
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    display: block;
   }
 `;
