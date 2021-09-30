@@ -4,6 +4,7 @@ import { Grid } from "styles/Grid";
 import Item from "./Item/Item";
 import { UserMovieContainer } from "./UserMovies.styles";
 import Text from "./Text";
+import Spinner from "components/Spinner/Spinner";
 
 const Favorites = () => {
   const { favorites, favoritesLoading } = useSelector(
@@ -12,9 +13,11 @@ const Favorites = () => {
 
   const { currentUser } = useSelector((state) => state.auth);
 
-  if (!currentUser) return <Text />;
+  if (favoritesLoading) return <Spinner />;
 
-  if (favoritesLoading) return "loading...";
+  if (!currentUser) return <Text text={"Please login to use this feature"} />;
+
+  if (favorites.length <= 0) return <Text text={"No favorites"} />;
 
   return (
     <UserMovieContainer>

@@ -8,6 +8,10 @@ export const AppbarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 80px;
+
+  .spinner {
+    width: 28px;
+  }
 `;
 
 export const SearchWrapper = styled.div`

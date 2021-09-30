@@ -6,6 +6,7 @@ import Movie from "components/Movie/Movie";
 import imgUrl from "Request/imgUrl";
 import { Grid } from "styles/Grid";
 import Paginate from "components/Pagination/Paginate";
+import Spinner from "components/Spinner/Spinner";
 
 const Genre = () => {
   const { id } = useParams();
@@ -21,7 +22,7 @@ const Genre = () => {
     setPage(page);
   };
 
-  if (moviesLoading) return "loading...";
+  if (moviesLoading) return <Spinner />;
 
   return (
     <div>

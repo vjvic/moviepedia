@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 import imgUrl from "Request/imgUrl";
 import { Grid } from "styles/Grid";
 import Paginate from "components/Pagination/Paginate";
+import Spinner from "components/Spinner/Spinner";
 
 const Results = () => {
   const { value } = useParams();
@@ -22,7 +23,7 @@ const Results = () => {
     setPage(page);
   };
 
-  if (moviesLoading) return "loading...";
+  if (moviesLoading) return <Spinner />;
 
   return (
     <div>

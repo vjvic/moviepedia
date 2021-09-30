@@ -4,6 +4,7 @@ import { Grid } from "styles/Grid";
 import Item from "./Item/Item";
 import { UserMovieContainer } from "./UserMovies.styles";
 import Text from "./Text";
+import Spinner from "components/Spinner/Spinner";
 
 const Watchlist = () => {
   const { watchlist, watchlistLoading } = useSelector(
@@ -12,9 +13,11 @@ const Watchlist = () => {
 
   const { currentUser } = useSelector((state) => state.auth);
 
-  if (!currentUser) return <Text />;
+  if (watchlistLoading) return <Spinner />;
 
-  if (watchlistLoading) return "loading...";
+  if (!currentUser) return <Text text={"Please login to use this feature"} />;
+
+  if (watchlist.length <= 0) return <Text text={"No watchlist"} />;
 
   return (
     <UserMovieContainer>

@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import MovieCarousel from "components/Carousel/MovieCarousel";
 import Hero from "components/Hero/Hero";
+import Spinner from "components/Spinner/Spinner";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Home = () => {
   }, [dispatch]);
 
   if (nowPlayingLoading || popularLoading || topRatedLoading || upcomingLoading)
-    return "loading...";
+    return <Spinner />;
 
   return (
     <div>

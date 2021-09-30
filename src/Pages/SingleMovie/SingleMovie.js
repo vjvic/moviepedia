@@ -22,6 +22,7 @@ import Modal from "components/Modal/Modal";
 import Trailer from "./Trailer/Trailer";
 import { closeTrailer } from "Redux/actions/uiAction";
 import DetailsButtons from "./DetailsButtons/DetailsButtons";
+import Spinner from "components/Spinner/Spinner";
 
 const SingleMovie = () => {
   const { id } = useParams();
@@ -33,7 +34,7 @@ const SingleMovie = () => {
     dispatch(fetchMovie(id));
   }, [dispatch, id]);
 
-  if (movieLoading) return "loading...";
+  if (movieLoading) return <Spinner />;
 
   const {
     poster_path,

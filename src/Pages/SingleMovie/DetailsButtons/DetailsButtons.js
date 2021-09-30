@@ -7,12 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { openTrailer } from "Redux/actions/uiAction";
 import { addMovie, deleteMovie } from "Redux/actions/firestoreAction";
 import { FaCheck } from "react-icons/fa";
+import spinner from "assets/spinner/spinner.gif";
 
 const DetailsButtons = ({ movieID }) => {
   const dispatch = useDispatch();
   const { movie } = useSelector((state) => state.movies);
   const { currentUser, loading } = useSelector((state) => state.auth);
-  const { favorites, watchlist } = useSelector((state) => state.firestore);
+  const { favorites, watchlist, watchlistLoading, favoritesLoading } =
+    useSelector((state) => state.firestore);
 
   //check the movie if it is in the database
   let storedFavorites = favorites.find((fave) => fave.id === movie.id);
@@ -57,7 +59,11 @@ const DetailsButtons = ({ movieID }) => {
           onClick={() => handleAddMovie("favorites")}
           disabled={notLogin}
         >
-          <AiOutlineHeart />
+          {watchlistLoading ? (
+            <img src={spinner} alt="spinner" />
+          ) : (
+            <AiOutlineHeart />
+          )}
           <span>Add to favorites</span>
         </BtnOutline>
       )}
@@ -78,7 +84,11 @@ const DetailsButtons = ({ movieID }) => {
           onClick={() => handleAddMovie("watchlist")}
           disabled={notLogin}
         >
-          <BsBookmark />
+          {favoritesLoading ? (
+            <img src={spinner} alt="spinner" />
+          ) : (
+            <BsBookmark />
+          )}
           <span>Add to watchlist</span>
         </BtnOutline>
       )}

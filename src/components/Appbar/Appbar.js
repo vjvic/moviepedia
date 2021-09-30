@@ -16,6 +16,7 @@ import { openModal, closeModal, toggleLoginForm } from "Redux/actions/uiAction";
 import Signup from "components/Forms/Signup";
 import { HiOutlineLogout } from "react-icons/hi";
 import { logout } from "Redux/actions/authAction";
+import spinner from "assets/spinner/spinner.gif";
 
 const Appbar = () => {
   const [query, setQuery] = useState("");
@@ -71,7 +72,7 @@ const Appbar = () => {
           </form>
         </SearchWrapper>
         {loading ? (
-          "loading..."
+          <img src={spinner} alt="spinner" className="spinner" />
         ) : currentUser ? (
           userIsLogin
         ) : (

@@ -10,10 +10,13 @@ import { Button } from "styles/Button.styles";
 import { CgRemoveR } from "react-icons/cg";
 import { deleteMovie } from "Redux/actions/firestoreAction";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const Item = ({ item, collection }) => {
   const { currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const movieID = item.id.toString();
 
@@ -24,9 +27,15 @@ const Item = ({ item, collection }) => {
       animate={{ opacity: 1 }}
       layout
     >
-      <img src={imgUrl.small + item.poster_path} alt={item.title} />
+      <img
+        src={imgUrl.small + item.poster_path}
+        alt={item.title}
+        onClick={() => history.push("/movie/" + item.id)}
+      />
       <Card>
-        <Truncate>{item.title}</Truncate>
+        <Truncate>
+          <Link>{item.title}</Link>
+        </Truncate>
         <small>{item.release_date}</small>
         <ReactStars
           isHalf={true}

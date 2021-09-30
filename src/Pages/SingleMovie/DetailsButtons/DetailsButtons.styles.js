@@ -11,5 +11,9 @@ export const DetailsBtnWrapper = styled.div`
     display: flex;
     align-items: center;
     grid-gap: 1rem;
+
+    img {
+      width: 1rem;
+    }
   }
 `;
