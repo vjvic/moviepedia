@@ -2,10 +2,9 @@
 
 Movie App created with React, [TMDb API](https://developers.themoviedb.org/3/getting-started/introduction) & Firebase
 
-<!-- ## Demo
+## Demo
 
-[Live site demo](https://moviepedia12.netlify.app/)
- -->
+[Live site demo](https://moviepedia2.netlify.app)
 
 ## Features
 
@@ -28,9 +27,8 @@ Movie App created with React, [TMDb API](https://developers.themoviedb.org/3/get
 ## Technologies
 
 - React 17.0.2
-- Firebase 8.8.1
-- React Router 5.2.0
-- Styled-components 5.3.0
+- Firebase 9.0.2
+- Styled-components 5.3.1
 
 ## Prerequisites
 
