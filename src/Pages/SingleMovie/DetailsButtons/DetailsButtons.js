@@ -12,7 +12,7 @@ import spinner from "assets/spinner/spinner.gif";
 const DetailsButtons = ({ movieID }) => {
   const dispatch = useDispatch();
   const { movie } = useSelector((state) => state.movies);
-  const { currentUser, loading } = useSelector((state) => state.auth);
+  const { currentUser, loading, token } = useSelector((state) => state.auth);
   const { favorites, watchlist, watchlistLoading, favoritesLoading } =
     useSelector((state) => state.firestore);
 
@@ -59,7 +59,7 @@ const DetailsButtons = ({ movieID }) => {
           onClick={() => handleAddMovie("favorites")}
           disabled={notLogin}
         >
-          {watchlistLoading ? (
+          {token && watchlistLoading ? (
             <img src={spinner} alt="spinner" />
           ) : (
             <AiOutlineHeart />
@@ -84,7 +84,7 @@ const DetailsButtons = ({ movieID }) => {
           onClick={() => handleAddMovie("watchlist")}
           disabled={notLogin}
         >
-          {favoritesLoading ? (
+          {token && favoritesLoading ? (
             <img src={spinner} alt="spinner" />
           ) : (
             <BsBookmark />

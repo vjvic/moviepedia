@@ -124,7 +124,7 @@ const SingleMovie = () => {
       <MovieCarousel
         items={recommendations}
         type={"BACKDROP"}
-        text={"Recommendations"}
+        text={recommendations.length <= 0 ? "" : "Recommendations"}
       />
     </>
   );
