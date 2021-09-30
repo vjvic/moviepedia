@@ -13,7 +13,6 @@ Movie App created with React, [TMDb API](https://developers.themoviedb.org/3/get
 - Search movies
 - View movie details
 - Watch movie trailers
-- Top reviews about the movie
 - Movie recommendations
 - Movie genres
 - User authentication
