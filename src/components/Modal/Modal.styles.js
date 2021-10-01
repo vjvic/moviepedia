@@ -11,4 +11,5 @@ export const ModalBackground = styled.div`
   left: 0;
   top: 0;
   z-index: 9999;
+  padding: 10px;
 `;

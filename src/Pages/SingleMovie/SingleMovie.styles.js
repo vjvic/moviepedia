@@ -19,6 +19,7 @@ export const ImgWrapper = styled.div`
 
   @media ${({ theme }) => theme.breakpoints.md} {
     width: 250px;
+    margin-bottom: 1rem;
   }
 `;
 

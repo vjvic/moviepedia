@@ -11,6 +11,7 @@ export const AppbarContainer = styled.div`
   position: fixed;
   width: 100%;
   z-index: 5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 
   .spinner {
     width: 28px;
@@ -82,6 +83,10 @@ export const Bars = styled(Button)`
   color: ${({ theme }) => theme.text.secondary};
 
   &:active {
+    color: ${({ theme }) => theme.text.primary};
+  }
+
+  &:hover {
     color: ${({ theme }) => theme.text.primary};
   }
 

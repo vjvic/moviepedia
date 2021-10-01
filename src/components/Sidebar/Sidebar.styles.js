@@ -12,12 +12,15 @@ export const SidebarContainer = styled.div`
   padding-top: 20px;
   border-right: 1px solid ${({ theme }) => theme.color.lead};
   background: ${({ theme }) => theme.color.lead};
-  transition: ${({ theme }) => theme.transition.ease};
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
   ::-webkit-scrollbar {
     display: none;
   }
 
   @media ${({ theme }) => theme.breakpoints.md} {
+    transition: ${({ theme }) => theme.transition.ease};
     left: ${({ isSidebar }) => (isSidebar ? 0 : "-100%")};
   }
 `;
@@ -90,6 +93,15 @@ export const CloseBtn = styled(Button)`
   top: 10px;
   right: 5px;
   display: none;
+  color: ${({ theme }) => theme.text.secondary};
+
+  &:active {
+    color: ${({ theme }) => theme.text.primary};
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.text.primary};
+  }
 
   @media ${({ theme }) => theme.breakpoints.md} {
     display: block;

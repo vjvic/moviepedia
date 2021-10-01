@@ -16,8 +16,8 @@ const Results = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchResults(value, 1));
-  }, [dispatch, value]);
+    dispatch(fetchResults(value, page));
+  }, [dispatch, value, page]);
 
   const changePage = (page) => {
     setPage(page);

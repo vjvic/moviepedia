@@ -29,6 +29,7 @@ Movie App created with React, [TMDb API](https://developers.themoviedb.org/3/get
 - React 17.0.2
 - Firebase 9.0.2
 - Styled-components 5.3.1
+- React Redux 7.2.5 & Redux-Thunk 2.3.0
 
 ## Prerequisites
 
