@@ -12,7 +12,7 @@ import {
   Cast,
   CastWrapper,
   CastOverlay,
-} from "./SingleMovie.styles";
+} from "./MovieDetails.styles";
 import imgUrl from "Request/imgUrl";
 import ReactStars from "react-rating-stars-component";
 import { convertAverage, getMovieLength } from "utils/utils";
@@ -24,7 +24,7 @@ import { closeTrailer } from "Redux/actions/uiAction";
 import DetailsButtons from "./DetailsButtons/DetailsButtons";
 import Spinner from "components/Spinner/Spinner";
 
-const SingleMovie = () => {
+const MovieDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { movie, movieLoading } = useSelector((state) => state.movies);
@@ -130,4 +130,4 @@ const SingleMovie = () => {
   );
 };
 
-export default SingleMovie;
+export default MovieDetails;

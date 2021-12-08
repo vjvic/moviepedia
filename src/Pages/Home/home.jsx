@@ -8,7 +8,7 @@ import {
 } from "Redux/actions/categoryAction";
 import { useDispatch, useSelector } from "react-redux";
 import MovieCarousel from "components/Carousel/MovieCarousel";
-import Hero from "components/Hero/Hero";
+import Hero from "Pages/Home/Hero/Hero";
 import Spinner from "components/Spinner/Spinner";
 
 const Home = () => {
