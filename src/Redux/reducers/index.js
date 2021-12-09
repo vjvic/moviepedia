@@ -1,15 +1,25 @@
 import { combineReducers } from "redux";
-import { genreReducer } from "./genreReducer";
-import { categoryReducer } from "./categoryReducer";
-import { movieReducer } from "./movieReducer";
+import {
+  movieListReducer,
+  movieDetailsReducer,
+  genreReducer,
+  nowPlayingReducer,
+  popularReducer,
+  upcomingReducer,
+  TopRatedReducer,
+} from "./movieReducer";
 import { authReducer } from "./authReducer";
 import { uiReducer } from "./uiReducer";
 import { firestoreReducer } from "./firestoreReducer";
 
 const reducers = combineReducers({
   genres: genreReducer,
-  category: categoryReducer,
-  movies: movieReducer,
+  nowPlaying: nowPlayingReducer,
+  popular: popularReducer,
+  upcoming: upcomingReducer,
+  topRated: TopRatedReducer,
+  movieDetails: movieDetailsReducer,
+  movieList: movieListReducer,
   auth: authReducer,
   ui: uiReducer,
   firestore: firestoreReducer,

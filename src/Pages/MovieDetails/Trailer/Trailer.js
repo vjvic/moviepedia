@@ -1,11 +1,8 @@
 import React from "react";
 import { TrailerContainer } from "./Trailer.styles";
-import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
-const Trailer = () => {
-  const { movie } = useSelector((state) => state.movies);
-
+const Trailer = ({ movie }) => {
   const trailer = movie.videos.results[0].key;
 
   return (

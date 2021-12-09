@@ -26,17 +26,19 @@ import Spinner from "components/Spinner/Spinner";
 
 const MovieDetails = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const { movie, movieLoading } = useSelector((state) => state.movies);
   const { isTrailer } = useSelector((state) => state.ui);
+  const { movie, loading, error } = useSelector((state) => state.movieDetails);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchMovie(id));
   }, [dispatch, id]);
 
-  if (movieLoading) return <Spinner />;
+  if (loading) return <Spinner />;
+  if (error) return error;
 
-  const {
+  /*  const {
     poster_path,
     title,
     overview,
@@ -46,86 +48,96 @@ const MovieDetails = () => {
     genres,
     recommendations,
     cast,
-  } = movie;
+  } = movie; */
 
   return (
     <>
       {isTrailer && (
         <Modal close={() => dispatch(closeTrailer())}>
-          <Trailer />
+          <Trailer movie={movie} />
         </Modal>
       )}
 
-      <SingleMovieContainer>
-        {/*  movie image */}
-        <ImgWrapper>
-          <img src={imgUrl.small + poster_path} alt={title} />
-        </ImgWrapper>
+      {movie && (
+        <SingleMovieContainer>
+          {/*  movie image */}
+          <ImgWrapper>
+            <img src={imgUrl.small + movie.poster_path} alt={movie.title} />
+          </ImgWrapper>
 
-        <div>
-          {/*  movie title */}
-          <h1>{title}</h1>
+          <div>
+            {/*  movie title */}
+            <h1>{movie.title}</h1>
 
-          {/*  movie runtime & release data */}
-          <Runtime>
-            {release_date} <span>| {getMovieLength(runtime)}</span>
-          </Runtime>
+            {/*  movie runtime & release data */}
+            <Runtime>
+              {movie.release_date}{" "}
+              <span>| {getMovieLength(movie.runtime)}</span>
+            </Runtime>
 
-          {/* movie rating */}
+            {/* movie rating */}
 
-          <RatingWrapper>
-            <ReactStars
-              isHalf={true}
-              value={convertAverage(vote_average)}
-              count={5}
-              size={24}
-              activeColor="#fafafa"
-              edit={false}
-            />
-            <p>{convertAverage(vote_average).toFixed(1, 0)}</p>
-          </RatingWrapper>
+            <RatingWrapper>
+              <ReactStars
+                isHalf={true}
+                value={convertAverage(movie.vote_average)}
+                count={5}
+                size={24}
+                activeColor="#fafafa"
+                edit={false}
+              />
+              <p>{convertAverage(movie.vote_average).toFixed(1, 0)}</p>
+            </RatingWrapper>
 
-          {/* genre */}
-          <h3>Genre</h3>
-          <Genre>
-            {genres.map((genre) => (
-              <li key={genre.id}>
-                <Link to={"/genre/" + genre.id}>{genre.name}</Link>
-              </li>
-            ))}
-          </Genre>
+            {/* genre */}
+            <h3>Genre</h3>
+            <Genre>
+              {movie.genres &&
+                movie.genres.map((genre) => (
+                  <li key={genre.id}>
+                    <Link to={"/genre/" + genre.id}>{genre.name}</Link>
+                  </li>
+                ))}
+            </Genre>
 
-          {/* movie  overview */}
-          <Overview>
-            <h3>Overview</h3>
-            <p>{overview}</p>
-          </Overview>
+            {/* movie  overview */}
+            <Overview>
+              <h3>Overview</h3>
+              <p>{movie.overview}</p>
+            </Overview>
 
-          {/* details buttons */}
-          <DetailsButtons movieID={id} />
+            {/* details buttons */}
+            <DetailsButtons movieID={id} movie={movie} />
 
-          {/* cast */}
-          <h3>Cast</h3>
-          <Cast>
-            {cast.map((item) => (
-              <CastWrapper key={item.id}>
-                <img src={imgUrl.small + item.profile_path} alt={item.name} />
-                <CastOverlay>
-                  <h5>{item.name}</h5>
-                </CastOverlay>
-              </CastWrapper>
-            ))}
-          </Cast>
-        </div>
-      </SingleMovieContainer>
+            {/* cast */}
+            <h3>Cast</h3>
+            <Cast>
+              {movie.cast &&
+                movie.cast.map((item) => (
+                  <CastWrapper key={item.id}>
+                    <img
+                      src={imgUrl.small + item.profile_path}
+                      alt={item.name}
+                    />
+                    <CastOverlay>
+                      <h5>{item.name}</h5>
+                    </CastOverlay>
+                  </CastWrapper>
+                ))}
+            </Cast>
+          </div>
+        </SingleMovieContainer>
+      )}
 
       {/*   recommendations */}
 
-      <MovieCarousel
-        items={recommendations}
-        type={"BACKDROP"}
-        text={recommendations.length <= 0 ? "" : "Recommendations"}
-      />
+      {movie && movie.recommendations && (
+        <MovieCarousel
+          items={movie.recommendations}
+          type={"BACKDROP"}
+          text={movie.recommendations.length <= 0 ? "" : "Recommendations"}
+        />
+      )}
     </>
   );
 };

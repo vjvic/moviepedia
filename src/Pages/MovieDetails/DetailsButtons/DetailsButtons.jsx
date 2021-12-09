@@ -9,9 +9,9 @@ import { addMovie, deleteMovie } from "Redux/actions/firestoreAction";
 import { FaCheck } from "react-icons/fa";
 import spinner from "assets/spinner/spinner.gif";
 
-const DetailsButtons = ({ movieID }) => {
+const DetailsButtons = ({ movieID, movie }) => {
   const dispatch = useDispatch();
-  const { movie } = useSelector((state) => state.movies);
+
   const { currentUser, loading, token } = useSelector((state) => state.auth);
   const { favorites, watchlist, watchlistLoading, favoritesLoading } =
     useSelector((state) => state.firestore);

@@ -11,7 +11,7 @@ import Spinner from "components/Spinner/Spinner";
 const Genre = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { movies, moviesLoading } = useSelector((state) => state.movies);
+  const { movies, loading, error } = useSelector((state) => state.movieList);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -22,20 +22,23 @@ const Genre = () => {
     setPage(page);
   };
 
-  if (moviesLoading) return <Spinner />;
+  if (loading) return <Spinner />;
+
+  if (error) return error;
 
   return (
     <div>
       <Grid>
-        {movies.results.map((item) => (
-          <Movie
-            key={item.id}
-            title={item.title}
-            img={imgUrl.small + item.poster_path}
-            vote={item.vote_average}
-            id={item.id}
-          />
-        ))}
+        {movies.results &&
+          movies.results.map((item) => (
+            <Movie
+              key={item.id}
+              title={item.title}
+              img={imgUrl.small + item.poster_path}
+              vote={item.vote_average}
+              id={item.id}
+            />
+          ))}
       </Grid>
 
       <Paginate

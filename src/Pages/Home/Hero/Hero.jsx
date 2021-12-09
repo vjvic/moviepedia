@@ -14,8 +14,8 @@ import { Button } from "styles/Button.styles";
 import { useHistory } from "react-router";
 
 const Hero = () => {
-  const { nowPlaying, nowPlayingLoading } = useSelector(
-    (state) => state.category
+  const { nowPlaying, loading, error } = useSelector(
+    (state) => state.nowPlaying
   );
 
   const history = useHistory();
@@ -35,39 +35,44 @@ const Hero = () => {
     },
   };
 
-  if (nowPlayingLoading) return "";
-
+  if (loading) return "";
+  if (error) return error;
   return (
     <HeroContainer>
       <HeroTitle>Now Playing</HeroTitle>
 
-      <Carousel
-        responsive={responsive}
-        autoPlay={true}
-        autoPlaySpeed={3000}
-        infinite={true}
-        sliderClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-      >
-        {nowPlaying.results.map((item) => (
-          <MovieWrapper key={item.id}>
-            <img src={imgUrl.original + item.backdrop_path} alt={item.title} />
-            <MovieOverlay>
-              <div>
-                <h2>{item.title}</h2>
-                <ReleaseDate>{item.release_date} </ReleaseDate>
-                <Button
-                  color="primary"
-                  size="md"
-                  onClick={() => history.push("/movie/" + item.id)}
-                >
-                  Details
-                </Button>
-              </div>
-            </MovieOverlay>
-          </MovieWrapper>
-        ))}
-      </Carousel>
+      {nowPlaying && (
+        <Carousel
+          responsive={responsive}
+          autoPlay={true}
+          autoPlaySpeed={3000}
+          infinite={true}
+          sliderClass="carousel-container"
+          removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+        >
+          {nowPlaying.results.map((item) => (
+            <MovieWrapper key={item.id}>
+              <img
+                src={imgUrl.original + item.backdrop_path}
+                alt={item.title}
+              />
+              <MovieOverlay>
+                <div>
+                  <h2>{item.title}</h2>
+                  <ReleaseDate>{item.release_date} </ReleaseDate>
+                  <Button
+                    color="primary"
+                    size="md"
+                    onClick={() => history.push("/movie/" + item.id)}
+                  >
+                    Details
+                  </Button>
+                </div>
+              </MovieOverlay>
+            </MovieWrapper>
+          ))}
+        </Carousel>
+      )}
     </HeroContainer>
   );
 };
