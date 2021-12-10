@@ -13,12 +13,12 @@ import { useHistory } from "react-router";
 import Modal from "components/Modal/Modal";
 import Login from "components/Forms/Login";
 import { useSelector, useDispatch } from "react-redux";
-import { openModal, closeModal, toggleLoginForm } from "Redux/actions/uiAction";
+import { openModal, closeModal, toggleLoginForm } from "redux/actions/uiAction";
 import Signup from "components/Forms/Signup";
 import { HiOutlineLogout } from "react-icons/hi";
-import { logout } from "Redux/actions/authAction";
+import { logout } from "redux/actions/authAction";
 import spinner from "assets/spinner/spinner.gif";
-import { openSidebar } from "Redux/actions/uiAction";
+import { openSidebar } from "redux/actions/uiAction";
 
 const Appbar = () => {
   const [query, setQuery] = useState("");

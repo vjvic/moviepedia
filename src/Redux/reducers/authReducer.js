@@ -1,4 +1,10 @@
-import { ActionTypes } from "Redux/constant/action-types";
+import {
+  GET_TOKEN,
+  SET_USER,
+  USER_ERROR,
+  USER_LOADING,
+  USER_LOGOUT,
+} from "redux/constant/authConstants";
 
 const initialToken = localStorage.getItem("token");
 
@@ -11,15 +17,15 @@ const initialState = {
 
 export const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case ActionTypes.GET_TOKEN:
+    case GET_TOKEN:
       return { ...state, token: payload, loading: false };
-    case ActionTypes.SET_USER:
+    case SET_USER:
       return { ...state, currentUser: payload, error: "", loading: false };
-    case ActionTypes.USER_LOGOUT:
+    case USER_LOGOUT:
       return { ...state, token: "", currentUser: "" };
-    case ActionTypes.USER_LOADING:
+    case USER_LOADING:
       return { ...state, loading: true, error: "" };
-    case ActionTypes.USER_ERROR:
+    case USER_ERROR:
       return { ...state, error: payload, loading: false };
     default:
       return state;

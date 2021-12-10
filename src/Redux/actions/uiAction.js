@@ -1,46 +1,56 @@
-import { ActionTypes } from "Redux/constant/action-types";
+import { USER_ERROR } from "redux/constant/authConstants";
+import {
+  CLOSE_FORM,
+  CLOSE_SIDEBAR,
+  CLOSE_TRAILER,
+  LOGIN_FORM,
+  OPEN_FORM,
+  OPEN_SIDEBAR,
+  OPEN_TRAILER,
+  SIGNUP_FORM,
+} from "redux/constant/uiConstants";
 
 //open modal
 export const openModal = () => {
-  return { type: ActionTypes.OPEN_FORM };
+  return { type: OPEN_FORM };
 };
 
 //close modal
 export const closeModal = () => {
-  return { type: ActionTypes.CLOSE_FORM };
+  return { type: CLOSE_FORM };
 };
 
 //toggle form
 
 export const toggleLoginForm = () => (dispatch) => {
-  dispatch({ type: ActionTypes.LOGIN_FORM });
-  dispatch({ type: ActionTypes.USER_ERROR, payload: "" });
+  dispatch({ type: LOGIN_FORM });
+  dispatch({ type: USER_ERROR, payload: "" });
 };
 
 export const toggleSignupForm = () => (dispatch) => {
-  dispatch({ type: ActionTypes.SIGNUP_FORM });
-  dispatch({ type: ActionTypes.USER_ERROR, payload: "" });
+  dispatch({ type: SIGNUP_FORM });
+  dispatch({ type: USER_ERROR, payload: "" });
 };
 
 //open trailer
 
 export const openTrailer = () => {
-  return { type: ActionTypes.OPEN_TRAILER };
+  return { type: OPEN_TRAILER };
 };
 
 //close trailer
 export const closeTrailer = () => {
-  return { type: ActionTypes.CLOSE_TRAILER };
+  return { type: CLOSE_TRAILER };
 };
 
 //open sidebar
 
 export const openSidebar = () => {
-  return { type: ActionTypes.OPEN_SIDEBAR };
+  return { type: OPEN_SIDEBAR };
 };
 
 //close sidebar
 
 export const closeSidebar = () => {
-  return { type: ActionTypes.CLOSE_SIDEBAR };
+  return { type: CLOSE_SIDEBAR };
 };

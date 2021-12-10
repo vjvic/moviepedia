@@ -3,8 +3,8 @@ import Layout from "components/Layout/Layout";
 import GlobalStyles from "styles/GlobalStyles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserData } from "Redux/actions/authAction";
-import { getFavorites, getWatchlist } from "Redux/actions/firestoreAction";
+import { getUserData } from "redux/actions/authAction";
+import { getFavorites, getWatchlist } from "redux/actions/movieAction";
 import {
   Genre,
   Home,
@@ -12,7 +12,7 @@ import {
   MovieDetails,
   Favorites,
   Watchlist,
-} from "./Pages";
+} from "./pages";
 
 function App() {
   const { token, currentUser } = useSelector((state) => state.auth);

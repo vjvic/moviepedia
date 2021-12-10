@@ -8,7 +8,7 @@ import ReactStars from "react-rating-stars-component";
 import { convertAverage } from "utils/utils";
 import { Button } from "styles/Button.styles";
 import { CgRemoveR } from "react-icons/cg";
-import { deleteMovie } from "Redux/actions/firestoreAction";
+import { deleteMovie } from "redux/actions/movieAction";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";

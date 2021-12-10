@@ -8,8 +8,8 @@ import {
 } from "./Forms.styles";
 import { Button } from "styles/Button.styles";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSignupForm } from "Redux/actions/uiAction";
-import { login } from "Redux/actions/authAction";
+import { toggleSignupForm } from "redux/actions/uiAction";
+import { login } from "redux/actions/authAction";
 import { arrangeText } from "utils/utils";
 import { motion } from "framer-motion";
 

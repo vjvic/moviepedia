@@ -20,7 +20,13 @@ import {
   GET_POPULAR_FAIL,
   GET_TOP_RATED_FAIL,
   GET_UPCOMING_FAIL,
-} from "Redux/constant/movieConstants";
+  GET_WATCHLIST_REQUEST,
+  GET_WATCHLIST_SUCCESS,
+  GET_WATCHLIST_FAIL,
+  GET_FAVORITES_REQUEST,
+  GET_FAVORITES_SUCCESS,
+  GET_FAVORITES_FAIL,
+} from "redux/constant/movieConstants";
 
 export const movieListReducer = (state = { movies: [] }, { payload, type }) => {
   switch (type) {
@@ -110,6 +116,33 @@ export const upcomingReducer = (state = {}, { type, payload }) => {
       return { upcoming: payload, loading: false };
     case GET_UPCOMING_FAIL:
       return { loading: false, error: payload };
+    default:
+      return state;
+  }
+};
+
+//user movie
+export const watchlistReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case GET_WATCHLIST_REQUEST:
+      return { ...state, loading: true };
+    case GET_WATCHLIST_SUCCESS:
+      return { watchlist: payload, lLoading: false };
+    case GET_WATCHLIST_FAIL:
+      return { loading: false, error: true };
+    default:
+      return state;
+  }
+};
+
+export const favoritesReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case GET_FAVORITES_REQUEST:
+      return { ...state, loading: true };
+    case GET_FAVORITES_SUCCESS:
+      return { favorites: payload, loading: false };
+    case GET_FAVORITES_FAIL:
+      return { loading: false, error: true };
     default:
       return state;
   }

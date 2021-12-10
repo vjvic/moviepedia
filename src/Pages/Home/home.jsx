@@ -5,10 +5,10 @@ import {
   fetchPopular,
   fetchTopRated,
   fetchUpcoming,
-} from "Redux/actions/movieAction";
+} from "redux/actions/movieAction";
 import { useDispatch, useSelector } from "react-redux";
 import MovieCarousel from "components/Carousel/MovieCarousel";
-import Hero from "Pages/Home/Hero/Hero";
+import Hero from "pages/Home/Hero/Hero";
 import Spinner from "components/Spinner/Spinner";
 
 const Home = () => {

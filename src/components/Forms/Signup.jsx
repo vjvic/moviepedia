@@ -8,11 +8,11 @@ import {
 } from "./Forms.styles";
 import { Button } from "styles/Button.styles";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleLoginForm } from "Redux/actions/uiAction";
+import { toggleLoginForm } from "redux/actions/uiAction";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { signup } from "Redux/actions/authAction";
+import { signup } from "redux/actions/authAction";
 import { arrangeText } from "utils/utils";
 import { motion } from "framer-motion";
 

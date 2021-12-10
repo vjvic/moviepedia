@@ -7,10 +7,11 @@ import {
   popularReducer,
   upcomingReducer,
   TopRatedReducer,
+  watchlistReducer,
+  favoritesReducer,
 } from "./movieReducer";
 import { authReducer } from "./authReducer";
 import { uiReducer } from "./uiReducer";
-import { firestoreReducer } from "./firestoreReducer";
 
 const reducers = combineReducers({
   genres: genreReducer,
@@ -20,9 +21,10 @@ const reducers = combineReducers({
   topRated: TopRatedReducer,
   movieDetails: movieDetailsReducer,
   movieList: movieListReducer,
+  favorites: favoritesReducer,
+  watchlist: watchlistReducer,
   auth: authReducer,
   ui: uiReducer,
-  firestore: firestoreReducer,
 });
 
 export default reducers;

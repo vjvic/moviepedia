@@ -1,7 +1,14 @@
 import authApi from "components/Apis/authApi";
-import { ActionTypes } from "Redux/constant/action-types";
 import { setToken, removeToken } from "utils/utils";
 import request from "Request/request";
+import {
+  GET_TOKEN,
+  SET_USER,
+  USER_ERROR,
+  USER_LOADING,
+  USER_LOGOUT,
+} from "redux/constant/authConstants";
+import { CLOSE_FORM } from "redux/constant/uiConstants";
 
 //login user
 export const login = (email, password) => async (dispatch) => {
@@ -13,11 +20,11 @@ export const login = (email, password) => async (dispatch) => {
 
     setToken(data.idToken);
 
-    dispatch({ type: ActionTypes.GET_TOKEN, payload: data.idToken });
-    dispatch({ type: ActionTypes.CLOSE_FORM });
+    dispatch({ type: GET_TOKEN, payload: data.idToken });
+    dispatch({ type: CLOSE_FORM });
   } catch (error) {
     dispatch({
-      type: ActionTypes.USER_ERROR,
+      type: USER_ERROR,
       payload: error.response.data.error.message,
     });
   }
@@ -33,7 +40,7 @@ export const signup = (email, password, userName) => (dispatch) => {
     })
     .then((response) => {
       setToken(response.data.idToken);
-      dispatch({ type: ActionTypes.GET_TOKEN, payload: response.data.idToken });
+      dispatch({ type: GET_TOKEN, payload: response.data.idToken });
 
       return authApi.post(request.update, {
         idToken: response.data.idToken,
@@ -41,24 +48,22 @@ export const signup = (email, password, userName) => (dispatch) => {
       });
     })
     .then(() => {
-      dispatch({ type: ActionTypes.CLOSE_FORM });
+      dispatch({ type: CLOSE_FORM });
     })
-    .catch((error) =>
-      dispatch({ type: ActionTypes.USER_ERROR, payload: error.message })
-    );
+    .catch((error) => dispatch({ type: USER_ERROR, payload: error.message }));
 };
 
 //get user data
 export const getUserData = (idToken) => async (dispatch) => {
-  dispatch({ type: ActionTypes.USER_LOADING });
+  dispatch({ type: USER_LOADING });
 
   const { data } = await authApi.post(request.lookup, { idToken });
 
-  dispatch({ type: ActionTypes.SET_USER, payload: data.users });
+  dispatch({ type: SET_USER, payload: data.users });
 };
 
 //logout
 export const logout = () => {
   removeToken();
-  return { type: ActionTypes.USER_LOGOUT };
+  return { type: USER_LOGOUT };
 };

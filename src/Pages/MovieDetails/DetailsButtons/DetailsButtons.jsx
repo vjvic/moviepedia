@@ -4,8 +4,8 @@ import { DetailsBtnWrapper } from "./DetailsButtons.styles";
 import { BsBookmark, BsPlay } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { openTrailer } from "Redux/actions/uiAction";
-import { addMovie, deleteMovie } from "Redux/actions/firestoreAction";
+import { openTrailer } from "redux/actions/uiAction";
+import { addMovie, deleteMovie } from "redux/actions/movieAction";
 import { FaCheck } from "react-icons/fa";
 import spinner from "assets/spinner/spinner.gif";
 
@@ -13,8 +13,12 @@ const DetailsButtons = ({ movieID, movie }) => {
   const dispatch = useDispatch();
 
   const { currentUser, loading, token } = useSelector((state) => state.auth);
-  const { favorites, watchlist, watchlistLoading, favoritesLoading } =
-    useSelector((state) => state.firestore);
+  const { favorites, loading: favoritesLoading } = useSelector(
+    (state) => state.favorites
+  );
+  const { watchlist, loading: watchlistLoading } = useSelector(
+    (state) => state.watchlist
+  );
 
   //check the movie if it is in the database
   let storedFavorites = favorites.find((fave) => fave.id === movie.id);

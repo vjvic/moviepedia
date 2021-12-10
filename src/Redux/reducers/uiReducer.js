@@ -1,4 +1,13 @@
-import { ActionTypes } from "Redux/constant/action-types";
+import {
+  CLOSE_FORM,
+  CLOSE_SIDEBAR,
+  CLOSE_TRAILER,
+  LOGIN_FORM,
+  OPEN_FORM,
+  OPEN_SIDEBAR,
+  OPEN_TRAILER,
+  SIGNUP_FORM,
+} from "redux/constant/uiConstants";
 
 const initialState = {
   isForm: false,
@@ -9,21 +18,21 @@ const initialState = {
 
 export const uiReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case ActionTypes.OPEN_FORM:
+    case OPEN_FORM:
       return { ...state, isForm: true };
-    case ActionTypes.CLOSE_FORM:
+    case CLOSE_FORM:
       return { ...state, isForm: false };
-    case ActionTypes.LOGIN_FORM:
+    case LOGIN_FORM:
       return { ...state, toggleForm: true };
-    case ActionTypes.SIGNUP_FORM:
+    case SIGNUP_FORM:
       return { ...state, toggleForm: false };
-    case ActionTypes.OPEN_TRAILER:
+    case OPEN_TRAILER:
       return { ...state, isTrailer: true };
-    case ActionTypes.CLOSE_TRAILER:
+    case CLOSE_TRAILER:
       return { ...state, isTrailer: false };
-    case ActionTypes.OPEN_SIDEBAR:
+    case OPEN_SIDEBAR:
       return { ...state, isSidebar: true };
-    case ActionTypes.CLOSE_SIDEBAR:
+    case CLOSE_SIDEBAR:
       return { ...state, isSidebar: false };
     default:
       return state;

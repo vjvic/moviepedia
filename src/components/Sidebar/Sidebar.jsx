@@ -12,9 +12,9 @@ import { menu } from "./sidebarData";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGenres } from "Redux/actions/movieAction";
+import { fetchGenres } from "redux/actions/movieAction";
 import { FaTimes } from "react-icons/fa";
-import { closeSidebar } from "Redux/actions/uiAction";
+import { closeSidebar } from "redux/actions/uiAction";
 
 const Sidebar = () => {
   const location = useLocation();

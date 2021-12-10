@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { fetchGenre } from "Redux/actions/movieAction";
+import { fetchGenre } from "redux/actions/movieAction";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "components/Movie/Movie";
 import imgUrl from "Request/imgUrl";

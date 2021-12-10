@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovie } from "Redux/actions/movieAction";
+import { fetchMovie } from "redux/actions/movieAction";
 import {
   SingleMovieContainer,
   ImgWrapper,
@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 import MovieCarousel from "components/Carousel/MovieCarousel";
 import Modal from "components/Modal/Modal";
 import Trailer from "./Trailer/Trailer";
-import { closeTrailer } from "Redux/actions/uiAction";
+import { closeTrailer } from "redux/actions/uiAction";
 import DetailsButtons from "./DetailsButtons/DetailsButtons";
 import Spinner from "components/Spinner/Spinner";
 
